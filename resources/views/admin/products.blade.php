@@ -32,15 +32,17 @@
                     <tbody>
                         @forelse($products as $product)
                             <tr>
-                                <td><img src="{{ asset($product->image_path) }}" alt="{{ $product->name }}" width="60"
-                                        height="60" style="object-fit: cover; border-radius: 8px;"></td>
+                                <td>
+                                    <img src="{{ $product->image_path }}" alt="{{ $product->name }}" width="60" height="60"
+                                        style="object-fit: cover; border-radius: 8px;">
+                                </td>
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->category->name }}</td>
                                 <td>{{ number_format($product->price, 2) }}</td>
                                 <td>{{ $product->stock }}</td>
                                 <td>
                                     <button class="btn btn-sm btn-primary"
-                                        onclick="openEditModal({{ $product->id }}, '{{ $product->name }}', {{ $product->category_id }}, '{{ $product->price }}', {{ $product->stock }}, '{{ asset($product->image_path) }}')">Edit</button>
+                                        onclick="openEditModal({{ $product->id }}, '{{ $product->name }}', {{ $product->category_id }}, '{{ $product->price }}', {{ $product->stock }}, '{{ $product->image_path }}')">Edit</button>
                                     <button class="btn btn-sm btn-danger"
                                         onclick="openDeleteModal({{ $product->id }})">Delete</button>
                                 </td>
@@ -60,7 +62,7 @@
             <div class="modal-content">
                 <span class="close" onclick="closeAddModal()">&times;</span>
                 <h3>Add New Product</h3>
-                <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.products.store') }}" method="POST">
                     @csrf
                     <input type="text" name="name" placeholder="Product Name" required>
                     <select name="category_id" required>
@@ -71,18 +73,18 @@
                     </select>
                     <input type="number" step="0.01" name="price" placeholder="Price" required>
                     <input type="number" name="stock" placeholder="Stock" required>
-                    <input type="file" name="image_path" required>
+                    <input type="url" name="image_path" placeholder="Image URL" required>
                     <button type="submit">Add Product</button>
                 </form>
             </div>
         </div>
 
-        <!-- Edit Modal -->
+        <!-- Edit Product Modal -->
         <div id="editModal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeEditModal()">&times;</span>
                 <h3>Edit Product</h3>
-                <form id="editForm" method="POST" enctype="multipart/form-data">
+                <form id="editForm" method="POST">
                     @csrf
                     @method('PUT')
                     <input type="text" name="name" id="editName" required>
@@ -93,8 +95,9 @@
                     </select>
                     <input type="number" step="0.01" name="price" id="editPrice" required>
                     <input type="number" name="stock" id="editStock" required>
-                    <input type="file" name="image_path">
-                    <img id="previewImage" src="" alt="Preview">
+                    <input type="url" name="image_path" id="editImagePath" placeholder="Image URL">
+                    <img id="previewImage" src="" alt="Preview"
+                        style="margin-top: 10px; max-width: 100%; border-radius: 6px;">
                     <button type="submit">Save Changes</button>
                 </form>
             </div>
@@ -108,7 +111,7 @@
                 <form id="deleteForm" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                    <button type="submit" class="btn custom-danger">Yes, Delete</button>
                     <button type="button" class="btn btn-secondary" onclick="closeDeleteModal()">Cancel</button>
                 </form>
             </div>
@@ -130,6 +133,7 @@
             document.getElementById('editCategory').value = categoryId;
             document.getElementById('editPrice').value = price;
             document.getElementById('editStock').value = stock;
+            document.getElementById('editImagePath').value = image;
             document.getElementById('previewImage').src = image;
             document.getElementById('editModal').classList.add('show');
         }

@@ -832,7 +832,7 @@ footer {
 }
 
 /* Button */
-.btn-danger {
+.custom-danger {
     color: #e11d48;
     font-size: 0.875rem;
     text-decoration: underline;
@@ -841,7 +841,7 @@ footer {
     cursor: pointer;
     transition: color 0.2s ease;
 }
-.btn-danger:hover {
+.btn-custom:hover {
     color: #be123c;
 }
 
@@ -949,6 +949,7 @@ footer {
   color: white;
   cursor: pointer;
   transition: 0.3s;
+  text-decoration: none;
 }
 
 .admin-product-page .modal-content button:hover {

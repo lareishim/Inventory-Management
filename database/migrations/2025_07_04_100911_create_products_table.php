@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->string('name');
             $table->unsignedBigInteger('category_id');
             $table->integer('stock');
-            $table->string('image_path');
+            $table->text('image_path');
             $table->decimal('price', 8, 2);
             $table->timestamps();
 

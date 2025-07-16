@@ -23,17 +23,15 @@ class ProductController extends Controller
             'category_id' => 'required|exists:categories,id',
             'price' => 'required|numeric',
             'stock' => 'required|integer',
-            'image_path' => 'required|image|mimes:jpg,jpeg,png'
+            'image_path' => 'required|url'
         ]);
-
-        $path = $request->file('image_path')->store('images', 'public');
 
         Product::create([
             'name' => $request->name,
             'category_id' => $request->category_id,
             'price' => $request->price,
             'stock' => $request->stock,
-            'image_path' => $path
+            'image_path' => $request->image_path
         ]);
 
         return redirect()->route('admin.products')->with('success', 'Product added.');
@@ -46,14 +44,13 @@ class ProductController extends Controller
             'category_id' => 'required|exists:categories,id',
             'price' => 'required|numeric',
             'stock' => 'required|integer',
-            'image_path' => 'nullable|image|mimes:jpg,jpeg,png'
+            'image_path' => 'nullable|url'
         ]);
 
         $data = $request->only(['name', 'category_id', 'price', 'stock']);
 
-        if ($request->hasFile('image_path')) {
-            $path = $request->file('image_path')->store('images', 'public');
-            $data['image_path'] = $path;
+        if ($request->filled('image_path')) {
+            $data['image_path'] = $request->image_path;
         }
 
         $product->update($data);

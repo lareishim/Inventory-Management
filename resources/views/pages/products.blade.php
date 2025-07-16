@@ -23,8 +23,8 @@
             @foreach ($products as $product)
                 <div class="product-card"
                     data-category="{{ strtolower(str_replace(['&', ' '], ['', '-'], $product->category->name)) }}"
-                    onclick="showProductDetails('{{ $product->name }}', '{{ $product->category->name }}', {{ $product->stock }}, '{{ asset($product->image_path) }}', '${{ number_format($product->price, 2) }}')">
-                    <img src="{{ asset($product->image_path) }}" alt="{{ $product->name }}" />
+                    onclick="showProductDetails('{{ $product->name }}', '{{ $product->category->name }}', {{ $product->stock }}, '{{ $product->image_path }}', '${{ number_format($product->price, 2) }}')">
+                    <img src="{{ $product->image_path }}" alt="{{ $product->name }}" />
                     <div class="product-info">
                         <div class="product-name">{{ $product->name }}</div>
                         <div class="product-price">${{ number_format($product->price, 2) }}</div>

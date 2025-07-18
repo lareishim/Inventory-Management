@@ -24077,7 +24077,6 @@ dl li {
 }
 .table th,
 .table td {
-  vertical-align: middle;
   font-size: 0.875rem;
   line-height: 1;
   white-space: nowrap;
@@ -24287,7 +24286,6 @@ dl li {
   border-radius: 100%;
   display: block;
   margin: auto;
-  vertical-align: middle;
   position: absolute;
   top: 1px;
   bottom: 1px;
@@ -24311,7 +24309,6 @@ dl li {
   border-radius: 100%;
   display: block;
   margin: auto;
-  vertical-align: middle;
   position: absolute;
   top: 1px;
   bottom: 1px;
@@ -24339,7 +24336,6 @@ dl li {
   border-radius: 4px;
   display: block;
   margin: auto;
-  vertical-align: middle;
   position: absolute;
   top: 6px;
   z-index: -1;
@@ -24360,7 +24356,6 @@ dl li {
   border-radius: 4px;
   display: block;
   margin: auto;
-  vertical-align: middle;
   position: absolute;
   top: 6px;
   z-index: -1;

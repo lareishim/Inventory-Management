@@ -1,0 +1,191 @@
+
+/* Table */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    background-color: #ffffff;
+}
+
+/* Table Header */
+.admin-table thead {
+    background: linear-gradient(to right, #7f53ac, #647dee);
+    color: #ffffff;
+}
+.admin-table thead th {
+    padding: 0.9rem 1.2rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+/* Table Body */
+.admin-table tbody td {
+    padding: 0.9rem 1.2rem;
+    color: #333;
+    vertical-align: middle;
+    border-top: 1px solid #f1f5f9;
+}
+
+/* Hover only on tbody rows */
+.admin-table tbody tr:hover {
+    background-color: #f3f4f6;
+}
+
+/* Button */
+.btn-danger {
+    color: #e11d48;
+    font-size: 0.875rem;
+    text-decoration: underline;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+.btn-danger:hover {
+    color: #be123c;
+}
+
+/* Note for "This is you" */
+.note {
+    font-style: italic;
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+/* Container Card */
+.table-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    background-color: white;
+    margin-top: 2rem;
+}
+
+/* Table */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+    text-align: left;
+}
+
+/* Table Header */
+.styled-table thead {
+    background: linear-gradient(90deg, #8e44ad, #5dade2);
+    color: white;
+}
+
+.styled-table th {
+    padding: 16px;
+    font-weight: 600;
+}
+
+/* Table Rows */
+.styled-table td {
+    padding: 16px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+}
+
+/* Row Hover Effect */
+.styled-table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Optional: Responsive Text Wrap */
+.styled-table td, .styled-table th {
+    white-space: nowrap;
+}
+
+/* MODAL ENHANCEMENTS for admin product page only */
+.admin-product-page .modal.show {
+  display: flex;
+}
+
+.admin-product-page .modal-content {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2.5rem;
+  max-width: 450px;
+  width: 95%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-in-out;
+  text-decoration: none;
+}
+
+.admin-product-page .modal-content h3 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+.admin-product-page .modal-content input,
+.admin-product-page .modal-content select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.admin-product-page .modal-content input:focus,
+.admin-product-page .modal-content select:focus {
+  border-color: #7f53ac;
+}
+
+.admin-product-page .modal-content button {
+  width: 100%;
+  background: linear-gradient(to right, #7f53ac, #647dee);
+  border: none;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 16px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.admin-product-page .modal-content button:hover {
+  opacity: 0.9;
+}
+
+.admin-product-page .modal-content .close {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #999;
+  transition: 0.2s;
+}
+
+.admin-product-page .modal-content .close:hover {
+  color: #000;
+}
+
+.admin-product-page #previewImage {
+  display: block;
+  margin: 0 auto 15px auto;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

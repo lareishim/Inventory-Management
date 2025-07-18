@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('title', 'Manage Products')
 
 @section('content')
     <div class="admin-product-page">
-        <div class="container mt-5">
+        <div class="container">
             <h1 class="mb-4">Product Management</h1>
 
             @if(session('success'))

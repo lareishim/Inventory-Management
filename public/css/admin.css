@@ -189,3 +189,14 @@
     transform: scale(1);
   }
 }
+
+.online-custom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 10px;
+    width: 10px;
+    background-color: #00d25b; /* green */
+    border: 2px solid white;
+    border-radius: 50%;
+}

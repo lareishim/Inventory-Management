@@ -16,12 +16,14 @@
         <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                <div class="nav-profile-img">
-                    <img src="assets/images/faces/face1.jpg" alt="image">
-                    <span class="availability-status online"></span>
-                </div>
-                <div class="nav-profile-text">
-                    <p class="mb-1 text-black">Lare Adeks</p>
+                <div class="nav-profile d-flex align-items-center">
+                    <div class="nav-profile-img position-relative">
+                        <img src="{{ asset('images/me.png') }}" alt="image" class="profile-img">
+                        <span class="availability-status"></span>
+                    </div>
+                    <div class="nav-profile-text ms-2">
+                        <p class="mb-0 text-black">Lare Adeks</p>
+                    </div>
                 </div>
             </a>
             <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
@@ -147,3 +149,23 @@
         <span class="mdi mdi-menu"></span>
     </button>
 </div>
+
+<style>
+    .profile-img {
+        height: 35px;
+        width: 35px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    .availability-status {
+        position: absolute;
+        bottom: 2px;
+        right: 2px;
+        height: 10px;
+        width: 10px;
+        background-color: #00d25b;
+        border-radius: 50%;
+        border: 2px solid white;
+    }
+</style>

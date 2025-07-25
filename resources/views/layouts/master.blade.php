@@ -48,9 +48,9 @@
             </div>
         </div> --}}
         <!-- partial:partials/_navbar.html -->
-        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-                <a class="navbar-brand brand-logo" href="{{ route('admin.dashboard') }}">
+        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row rounded-4">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start rounded-4">
+                <a class="navbar-brand brand-logo rounded-4" href="{{ route('admin.dashboard') }}">
                     <img src="{{ asset('images/autoparts-pro.png') }}" alt="logo" style="height: auto; width: auto;" />
                 </a>
                 <a class="navbar-brand brand-logo-mini" href="{{ route('admin.dashboard') }}">

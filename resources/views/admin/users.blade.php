@@ -2,7 +2,13 @@
 
 @section('content')
     <div class="admin-container">
-        <h2 class="admin-title">User Management</h2>
+        <div class="page-header">
+            <h3 class="page-title">
+                <span class="page-title-icon bg-gradient-primary text-white me-2">
+                    <i class="mdi mdi-home"></i>
+                </span> Manage Users
+            </h3>
+        </div>
 
         {{-- Flash Messages --}}
         @if(session('success'))
@@ -46,7 +52,8 @@
                                     <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="inline-block">
                                         @csrf
                                         @method('DELETE')
-                                        <button onclick="return confirm('Are you sure?')" class="btn-danger">Delete</button>
+                                        <button onclick="return confirm('Are you sure?')" class="btn btn-sm"
+                                            style="background-color: red; color: white; text-decoration: none;">Delete</button>
                                     </form>
                                 @else
                                     <span class="note">This is you</span>

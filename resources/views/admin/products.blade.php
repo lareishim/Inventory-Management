@@ -5,7 +5,13 @@
 @section('content')
     <div class="admin-product-page">
         <div class="container">
-            <h1 class="mb-4">Product Management</h1>
+            <div class="page-header">
+                <h3 class="page-title">
+                    <span class="page-title-icon bg-gradient-primary text-white me-2">
+                        <i class="mdi mdi-home"></i>
+                    </span> Manage Products
+                </h3>
+            </div>
 
             @if(session('success'))
                 <div class="alert alert-success mb-4">
@@ -14,7 +20,8 @@
             @endif
 
             {{-- ADD PRODUCT BUTTON --}}
-            <button class="btn btn-success mb-4" onclick="openAddModal()">Add Product</button>
+            <button class="btn mb-4" style=" color: white; background-color: #af5ad0" onclick="openAddModal()">Add
+                Product</button>
 
             {{-- PRODUCT TABLE --}}
             <div class="table-card">
@@ -43,7 +50,8 @@
                                 <td>
                                     <button class="btn btn-sm btn-primary"
                                         onclick="openEditModal({{ $product->id }}, '{{ $product->name }}', {{ $product->category_id }}, '{{ $product->price }}', {{ $product->stock }}, '{{ $product->image_path }}')">Edit</button>
-                                    <button class="btn btn-sm btn-danger"
+                                    <button class="btn btn-sm"
+                                        style="color: #ffffff; background-color: red; text-decoration: none;"
                                         onclick="openDeleteModal({{ $product->id }})">Delete</button>
                                 </td>
                             </tr>

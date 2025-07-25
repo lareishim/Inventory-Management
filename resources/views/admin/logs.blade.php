@@ -2,7 +2,13 @@
 
 @section('content')
     <div class="admin-container">
-        <h2 class="admin-title">Activity Logs</h2>
+        <div class="page-header">
+            <h3 class="page-title">
+                <span class="page-title-icon bg-gradient-primary text-white me-2">
+                    <i class="mdi mdi-home"></i>
+                </span> Activity Logs
+            </h3>
+        </div>
 
         {{-- Flash Success Message --}}
         @if(session('success'))
@@ -13,14 +19,14 @@
         <form id="clearLogsForm" method="POST" action="{{ route('admin.logs.clear') }}">
             @csrf
             @method('DELETE')
-            <button type="submit" class="btn-danger">Clear All Logs</button>
+            <button type="submit" class="btn btn-sm" style="color: white; background-color: red">Clear All Logs</button>
         </form>
 
 
         @if($logs->isEmpty())
             <p class="note">No activity logs found.</p>
         @else
-            <div class="table-wrapper">
+            <div class="table-wrapper" style="margin-top: 20px;">
                 <table class="admin-table">
                     <thead>
                         <tr>

@@ -58,7 +58,7 @@
     overflow: hidden;
     box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     background-color: white;
-    margin-top: 2rem;
+    margin-top: 0.5rem;
 }
 
 /* Table */
@@ -196,7 +196,7 @@
     right: 0;
     height: 10px;
     width: 10px;
-    background-color: #00d25b; /* green */
+    background-color: #00d25b;
     border: 2px solid white;
     border-radius: 50%;
 }

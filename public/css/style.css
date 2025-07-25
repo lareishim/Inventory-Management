@@ -329,17 +329,11 @@ h3 {
   height: 80px;
 }
 
-.site-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #7f53ac;
-  flex: 1;
-}
 
 nav {
   flex: 2;
   display: flex;
-  justify-content: center;
+  justify-content: right;
 }
 
 nav ul {

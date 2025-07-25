@@ -11,7 +11,11 @@
 <body>
     <header>
         <div class="header-container">
-            <div class="site-title">AutoParts Pro</div>
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start rounded-4">
+                <a class="navbar-brand brand-logo rounded-4" href="{{ route('home') }}">
+                    <img src="{{ asset('images/autoparts-pro.png') }}" alt="logo" style="height: 50px; width: auto;" />
+                </a>
+            </div>
             <nav>
                 <ul>
                     @auth

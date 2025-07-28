@@ -200,3 +200,101 @@
     border: 2px solid white;
     border-radius: 50%;
 }
+
+/* MODAL ENHANCEMENTS for admin user page only */
+.admin-user-page .modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.4);
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-user-page .modal.show {
+  display: flex;
+}
+
+.admin-user-page .modal-content {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2.5rem;
+  max-width: 450px;
+  width: 95%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-in-out;
+  text-decoration: none;
+}
+
+.admin-user-page .modal-content h3 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+.admin-user-page .modal-content input,
+.admin-user-page .modal-content select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.admin-user-page .modal-content input:focus,
+.admin-user-page .modal-content select:focus {
+  border-color: #7f53ac;
+}
+
+.admin-user-page .modal-content button {
+  width: 100%;
+  background: linear-gradient(to right, #7f53ac, #647dee);
+  border: none;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 16px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.admin-user-page .modal-content button:hover {
+  opacity: 0.9;
+}
+
+.admin-user-page .modal-content .close {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #999;
+  transition: 0.2s;
+}
+
+.admin-user-page .modal-content .close:hover {
+  color: #000;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

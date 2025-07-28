@@ -11,9 +11,9 @@ use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\LogController;
+use App\Http\Controllers\Admin\DashboardController;
 
-
-// Google OAuth (make sure user gets logged in after callback)
+// Google OAuth
 Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
@@ -34,45 +34,36 @@ Route::middleware('guest')->group(function () {
 
 // Authenticated user routes
 Route::middleware('auth')->group(function () {
-    // Email verification
     Route::get('/email/verify', fn() => view('auth.verify-email'))->name('verification.notice');
     Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->middleware(['signed'])->name('verification.verify');
     Route::post('/email/verification-notification', [VerificationController::class, 'resend'])->middleware('throttle:6,1')->name('verification.send');
 
-    // Confirm password
     Route::get('/confirm-password', fn() => view('auth.confirm-password'))->name('password.confirm');
     Route::post('/confirm-password', [ConfirmPasswordController::class, 'store']);
 
-    // Logout
     Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 });
 
-// Admin routes (only for users with role:admin)
-Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/dashboard', fn() => view('admin.dashboard'))->name('admin.dashboard');
+// Admin & Super-Admin shared routes
+Route::prefix('admin')->middleware(['auth', 'role:admin|super-admin'])->name('admin.')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    // Admin features
-    Route::get('/users', [UserController::class, 'index'])->name('admin.users');
-    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('admin.users.destroy');
+    // Users (view and delete)
+    Route::get('/users', [UserController::class, 'index'])->name('users');
+    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 
-    Route::get('/products', [ProductController::class, 'index'])->name('admin.products');
+    // Products
+    Route::get('/products', [ProductController::class, 'index'])->name('products');
+    Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+    Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+    Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 
-    Route::get('/logs', [LogController::class, 'index'])->name('admin.logs');
-    Route::delete('/logs/clear', [LogController::class, 'clear'])->name('admin.logs.clear');
+    // Logs
+    Route::get('/logs', [LogController::class, 'index'])->name('logs');
+    Route::delete('/logs/clear', [LogController::class, 'clear'])->name('logs.clear');
 });
 
-Route::get('/test-google-env', function () {
-    dd([
-        'env_raw' => env('GOOGLE_CLIENT_ID'),
-        'config_read' => config('services.google.client_id'),
-    ]);
+// Super-Admin only: Create user
+Route::prefix('admin')->middleware(['auth', 'role:super-admin'])->name('admin.')->group(function () {
+    Route::post('/users', [UserController::class, 'store'])->name('users.store');
 });
-
-Route::prefix('admin')->middleware('is_admin')->group(function () {
-    Route::get('/products', [ProductController::class, 'index'])->name('admin.products');
-    Route::post('/products', [ProductController::class, 'store'])->name('admin.products.store');
-    Route::put('/products/{product}', [ProductController::class, 'update'])->name('admin.products.update');
-    Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
-});
-
-Route::get('/admin/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');

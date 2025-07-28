@@ -20,7 +20,7 @@
             @endif
 
             {{-- ADD PRODUCT BUTTON --}}
-            <button class="btn mb-4" style=" color: white; background-color: #af5ad0" onclick="openAddModal()">Add
+            <button class="btn btn-gradient-primary mb-3" onclick="openAddModal()">Add
                 Product</button>
 
             {{-- PRODUCT TABLE --}}

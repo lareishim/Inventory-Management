@@ -49,31 +49,6 @@
                     </tbody>
                 </table>
             </div>
-
-            <div class="mt-4">
-                {{ $logs->links() }}
-            </div>
         @endif
     </div>
 @endsection
-
-@push('scripts')
-    <script>
-        document.getElementById('clearLogsBtn')?.addEventListener('click', function () {
-            Swal.fire({
-                title: 'Delete All Logs?',
-                text: "This will permanently delete all activity logs.",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#e11d48',
-                cancelButtonColor: '#6b7280',
-                confirmButtonText: 'Yes, delete all!',
-                reverseButtons: true
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('clearLogsForm').submit();
-                }
-            });
-        });
-    </script>
-@endpush
